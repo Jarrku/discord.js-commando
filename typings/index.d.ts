@@ -46,7 +46,7 @@ declare module 'discord.js-commando' {
 		public validate(value: string, msg: CommandMessage, arg: Argument): boolean | string | Promise<boolean | string>;
 	}
 
-	export class Command {
+	export abstract class Command {
 		public constructor(client: CommandoClient, info: CommandInfo);
 
 		private _globalEnabled: boolean;
@@ -79,7 +79,7 @@ declare module 'discord.js-commando' {
 		public isEnabledIn(guild: GuildResolvable): boolean;
 		public isUsable(message: Message): boolean;
 		public reload(): void;
-		public run(message: CommandMessage, args: object | string | string[], fromPattern: boolean): Promise<Message | Message[]>
+		abstract run(message: CommandMessage, args: object | string | string[], fromPattern: boolean): Promise<Message | Message[]>
 		public setEnabledIn(guild: GuildResolvable, enabled: boolean): void;
 		public unload(): void;
 		public usage(argString?: string, prefix?: string, user?: User): string;
